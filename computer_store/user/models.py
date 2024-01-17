@@ -11,5 +11,5 @@ class User(AbstractUser):
         upload_to="user/avatar/", null=True, blank=True, default=None
     )
     full_name = models.CharField(max_length=255, null=False, blank=False)
-    create_at = models.DateField(default=django.utils.timezone.now, editable=False)
-    update_at = models.DateField(default=django.utils.timezone.now, editable=False)
+    create_at = models.DateTimeField(auto_now_add=True, editable=False)
+    update_at = models.DateTimeField(auto_now=True, editable=False)

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "computer_store.user.apps.UserConfig",
+    "computer_store.predator",
 ]
 
 MIDDLEWARE = [
