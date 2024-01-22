@@ -7,11 +7,9 @@ from computer_store.user.models import User
 # Create your models here.
 class Categories(models.Model):
     name = models.CharField(max_length=255, null=False, blank=False)
-    image = models.ImageField(
-        upload_to="predator/image/", null=True, blank=True, default=None
-    )
-    create_at = models.DateTimeField(auto_now_add=True, editable=False)
-    update_at = models.DateTimeField(auto_now=True, editable=False)
+    image = models.ImageField(upload_to="images", null=True, blank=True, default=None)
+    created_at = models.DateTimeField(auto_now_add=True, editable=False)
+    updated_at = models.DateTimeField(auto_now=True, editable=False)
 
 
 class Product(models.Model):
@@ -26,8 +24,8 @@ class Product(models.Model):
     inventory = models.IntegerField(default=0)
     discount = models.IntegerField(default=0)
     rate = models.IntegerField(default=0)
-    create_at = models.DateTimeField(auto_now_add=True, editable=False)
-    update_at = models.DateTimeField(auto_now=True, editable=False)
+    created_at = models.DateTimeField(auto_now_add=True, editable=False)
+    updated_at = models.DateTimeField(auto_now=True, editable=False)
 
 
 class ProductImages(models.Model):
@@ -35,8 +33,8 @@ class ProductImages(models.Model):
     image = models.ImageField(
         upload_to="predator/image/", null=True, blank=True, default=None
     )
-    create_at = models.DateTimeField(auto_now_add=True, editable=False)
-    update_at = models.DateTimeField(auto_now=True, editable=False)
+    created_at = models.DateTimeField(auto_now_add=True, editable=False)
+    updated_at = models.DateTimeField(auto_now=True, editable=False)
 
 
 class Order(models.Model):
@@ -47,13 +45,13 @@ class Order(models.Model):
     note = models.CharField(max_length=1000, null=True, blank=True)
     status = models.IntegerField(default=0)
     feedback = models.CharField(max_length=255, null=False, blank=False)
-    create_at = models.DateTimeField(auto_now_add=True, editable=False)
-    update_at = models.DateTimeField(auto_now=True, editable=False)
+    created_at = models.DateTimeField(auto_now_add=True, editable=False)
+    updated_at = models.DateTimeField(auto_now=True, editable=False)
 
 
 class OrderItem(models.Model):
     order: models.ForeignKey(Order, on_delete=models.CASCADE)
     product: models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity: models.IntegerField(default=0)
-    create_at = models.DateTimeField(auto_now_add=True, editable=False)
-    update_at = models.DateTimeField(auto_now=True, editable=False)
+    created_at = models.DateTimeField(auto_now_add=True, editable=False)
+    updated_at = models.DateTimeField(auto_now=True, editable=False)
