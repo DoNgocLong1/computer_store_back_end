@@ -11,6 +11,9 @@ class Categories(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True, editable=False)
 
+    def __str__(self):
+        return self.name
+
 
 class Product(models.Model):
     name = models.CharField(max_length=255, null=False, blank=False)
@@ -26,6 +29,9 @@ class Product(models.Model):
     rate = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True, editable=False)
+
+    def __str__(self):
+        return self.name
 
 
 class ProductImages(models.Model):
@@ -48,6 +54,9 @@ class Order(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True, editable=False)
 
+    def __str__(self):
+        return self.id
+
 
 class OrderItem(models.Model):
     order: models.ForeignKey(Order, on_delete=models.CASCADE)
@@ -55,3 +64,6 @@ class OrderItem(models.Model):
     quantity: models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True, editable=False)
+
+    def __str__(self):
+        return self.id

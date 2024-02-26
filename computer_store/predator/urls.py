@@ -8,4 +8,4 @@ router = DefaultRouter(trailing_slash=False)
 router.register(r"categories", views.Categories, basename="categories")
 urlpatterns = router.urls
 # Create your views here.
-# urlpatterns = [path("categories", views.Categories.as_view(), name="Categories")]
+urlpatterns = [path("product/<int:id>", views.ProductDetail.as_view(), name="product_detail")]
