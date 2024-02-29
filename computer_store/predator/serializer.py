@@ -12,7 +12,7 @@ class CategoriesSerializer(serializers.ModelSerializer):
 class ProductImagesSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.ProductImages
-        fields = ("image")
+        fields = ("image","productId")
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -22,8 +22,7 @@ class ProductSerializer(serializers.ModelSerializer):
         # Lấy tất cả các hình ảnh của sản phẩm có product_id tương ứng
         product_images = models.ProductImages.objects.filter(productId=obj.id)
         # Serialize các hình ảnh sử dụng ProductImagesSerializer
-        serializer = ProductImagesSerializer(product_images, many=True)
-        return serializer.data
+        return [image.image.url for image in product_images]
 
     class Meta:
         model = models.Product
